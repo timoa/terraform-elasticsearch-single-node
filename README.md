@@ -19,7 +19,7 @@ It supports encryption at rest with a custom KMS key and IAM Access Policy that 
 ### Input
 
 | Name | Description | Type |  Default | Required |
-|------|-------------|------|----------|----------|
+|------|-------------|:------:|----------|:----------:|
 | `my_public_ip` | Your public IP | String | | Yes |
 | `aws_region` | The AWS region where you want to deploy your Elasticsearch instance | String | `us-east-1` | No |
 | `domain_name` | Elasticsearch cluster name | String | `elasticsearch-single-node` | No |
@@ -31,7 +31,7 @@ It supports encryption at rest with a custom KMS key and IAM Access Policy that 
 ### Output
 
 | Name | Description | Type |
-|------|-------------|------|
+|------|-------------|:------:|
 | `elasticsearch_endpoint` | Elasticsearch public endpoint | String |
 | `elasticsearch_kibana_endpoint` | Elasticsearch Kibana public endpoint | String |
 
@@ -66,11 +66,11 @@ This Terraform module can also be improved by adding this changes:
 #### Cloud Conformity
 
 | Description | Risk level | Link |
-|-------------|------------|------|
-| Elasticsearch Domain open to Internet | **High** | [Elasticsearch Domain IP-Based Access][1] |
+|-------------|:------------:|------|
+| Elasticsearch Domain open to Internet | **High**| [Elasticsearch Domain IP-Based Access][1] |
 | Elasticsearch Domain without encryption at rest | **High** | [Enable AWS ElasticSearch Encryption At Rest][2] |
-| Elasticsearch Domain encryption with AWS managed-keys | **High** | [Elasticsearch Domain Encrypted with KMS CMKs][3] |
-| Elasticsearch Domain outside custom VPC | **High** | [AWS Elasticsearch Domain In VPC][4]
+| Elasticsearch Domain encryption with AWS managed-keys |  **High**  | [Elasticsearch Domain Encrypted with KMS CMKs][3] |
+| Elasticsearch Domain outside custom VPC |  **High**  | [AWS Elasticsearch Domain In VPC][4]
 
 [1]: https://www.cloudconformity.com/conformity-rules/Elasticsearch/elasticsearch-accessible-only-from-whitelisted-ip-addresses.html
 [2]: https://www.cloudconformity.com/conformity-rules/Elasticsearch/encryption-at-rest.html
