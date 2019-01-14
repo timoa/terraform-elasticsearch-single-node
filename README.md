@@ -1,4 +1,4 @@
-# Terraform module - AWS Elasticsearch Service Single Node example
+# Terraform module - AWS Elasticsearch Service Single Node
 
 Example of a minimal Terraform module to deploy an AWS Elasticsearch Service instance with a single node.
 
