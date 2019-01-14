@@ -67,10 +67,10 @@ This Terraform module can also be improved by adding this changes:
 
 | Description | Risk level | Link |
 |-------------|------------|------|
-| Elasticsearch Domain open to Internet | High (not acceptable risk) | [Elasticsearch Domain IP-Based Access][1] |
-| Elasticsearch Domain without encryption at rest | High (not acceptable risk) | [Enable AWS ElasticSearch Encryption At Rest][2] |
-| Elasticsearch Domain encryption with AWS managed-keys | High (not acceptable risk) | [Elasticsearch Domain Encrypted with KMS CMKs][3] |
-| Elasticsearch Domain outside custom VPC | High (not acceptable risk) | [AWS Elasticsearch Domain In VPC][4]
+| Elasticsearch Domain open to Internet | **High*** | [Elasticsearch Domain IP-Based Access][1] |
+| Elasticsearch Domain without encryption at rest | **High*** | [Enable AWS ElasticSearch Encryption At Rest][2] |
+| Elasticsearch Domain encryption with AWS managed-keys | **High*** | [Elasticsearch Domain Encrypted with KMS CMKs][3] |
+| Elasticsearch Domain outside custom VPC | **High*** | [AWS Elasticsearch Domain In VPC][4]
 
 [1]: https://www.cloudconformity.com/conformity-rules/Elasticsearch/elasticsearch-accessible-only-from-whitelisted-ip-addresses.html
 [2]: https://www.cloudconformity.com/conformity-rules/Elasticsearch/encryption-at-rest.html
