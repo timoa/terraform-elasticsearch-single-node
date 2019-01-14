@@ -2,7 +2,7 @@
  * Usage:
  *
  * module "es-single-node" {
- *   source = "git::https://github.com/timoa/terraform-elastic-single-node/minimal"
+ *   source = "github.com/timoa/terraform-elasticsearch-single-node/minimal"
  *
  *   # Your public IP to secure your Elasticsearch instance (required)
  *   my_public_ip    = "1.2.3.4"
