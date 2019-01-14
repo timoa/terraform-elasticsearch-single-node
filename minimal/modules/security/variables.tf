@@ -1,3 +1,4 @@
 variable tags {
-  type = "map"
+  description = "List of default tags"
+  type        = "map"
 }

@@ -1,3 +1,18 @@
+/**
+ * Usage:
+ *
+ * module "es-single-node" {
+ *   source = "git::https://github.com/timoa/terraform-elastic-single-node/minimal"
+ *
+ *   # Your public IP to secure your Elasticsearch instance (required)
+ *   my_public_ip    = "1.2.3.4"
+ *
+ *   # AWS Region where you want to deploy your Elasticsearch single node
+ *   aws_region      = "eu-east-2"
+ *
+ * }
+ */
+
 module "security" {
   source = "./modules/security"
 

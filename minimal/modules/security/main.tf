@@ -1,5 +1,5 @@
 resource "aws_kms_key" "elasticsearch_kms_key" {
-  description = "KMS key to encrypt the Elasticsearch volume"
+  description = "KMS key used to encrypt the Elasticsearch volume"
 
   # Tags
   tags = "${merge(var.tags, map(
@@ -8,6 +8,7 @@ resource "aws_kms_key" "elasticsearch_kms_key" {
 }
 
 resource "aws_kms_alias" "key" {
+  description   = "KMS alias used to provides a name to the KMS Key"
   name          = "alias/elasticsearch-kms"
   target_key_id = "${aws_kms_key.elasticsearch_kms_key.key_id}"
 }

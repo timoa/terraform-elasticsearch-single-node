@@ -1,24 +1,37 @@
 variable aws_region {}
 
+# Get your current AWS account ID for the access policy (resource)
 data "aws_caller_identity" "current" {}
 
 resource "aws_elasticsearch_domain" "elasticsearch" {
-  domain_name           = "${var.domain_name}"
+  # Name of the Elasticsearch cluster (domain)
+  domain_name = "${var.domain_name}"
+
+  # Elasticsearch version (last supported by AWS is 6.3)
   elasticsearch_version = "${var.elasticsearch_version}"
 
+  # Encryption of the Elasticsearch instance volume with a KMS CMK
   encrypt_at_rest {
     enabled    = "true"
     kms_key_id = "${var.encryption_kms_key_id}"
   }
 
   cluster_config {
-    instance_type            = "${var.instance_type}"
-    instance_count           = "1"
+    # Instance type of the data node in the cluster
+    instance_type = "${var.instance_type}"
+
+    # Number of instances in the cluster (single node = 1)
+    instance_count = "1"
+
+    # Useless since were are using only one node
     dedicated_master_enabled = "false"
     dedicated_master_count   = "0"
-    zone_awareness_enabled   = "false"
+
+    # Clone of the node in antoher AZ
+    zone_awareness_enabled = "false"
   }
 
+  # Access policy that restricts the Elasticsearch access to your public IP only
   access_policies = <<POLICY
   {
     "Version": "2012-10-17",
@@ -52,6 +65,7 @@ resource "aws_elasticsearch_domain" "elasticsearch" {
   }
 
   snapshot_options {
+    # Hour during which the service takes an automated daily snapshot of the indices in the domain
     automated_snapshot_start_hour = "0"
   }
 

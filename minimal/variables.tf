@@ -44,7 +44,7 @@ variable "volume_size" {
 #################
 
 variable "tags" {
-  description = "Tags to apply to all the resources"
+  description = "Default tags to apply to all the resources"
   type        = "map"
 
   default = {
