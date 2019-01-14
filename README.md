@@ -45,7 +45,7 @@ module "es-single-node" {
   my_public_ip    = "1.2.3.4"
 
   # AWS Region where you want to deploy your Elasticsearch single node
-  aws_region      = "eu-east-2"
+  aws_region      = "eu-west-2"
 
 }
 ```
