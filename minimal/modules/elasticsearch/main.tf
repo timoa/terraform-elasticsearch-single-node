@@ -5,20 +5,20 @@ data "aws_caller_identity" "current" {}
 
 resource "aws_elasticsearch_domain" "elasticsearch" {
   # Name of the Elasticsearch cluster (domain)
-  domain_name = "${var.domain_name}"
+  domain_name = var.domain_name
 
   # Elasticsearch version (last supported by AWS is 6.3)
-  elasticsearch_version = "${var.elasticsearch_version}"
+  elasticsearch_version = var.elasticsearch_version
 
   # Encryption of the Elasticsearch instance volume with a KMS CMK
   encrypt_at_rest {
     enabled    = "true"
-    kms_key_id = "${var.encryption_kms_key_id}"
+    kms_key_id = var.encryption_kms_key_id
   }
 
   cluster_config {
     # Instance type of the data node in the cluster
-    instance_type = "${var.instance_type}"
+    instance_type = var.instance_type
 
     # Number of instances in the cluster (single node = 1)
     instance_count = "1"
@@ -53,7 +53,7 @@ resource "aws_elasticsearch_domain" "elasticsearch" {
   }
   POLICY
 
-  advanced_options {
+  advanced_options = {
     "rest.action.multi.allow_explicit_index" = "true"
     "indices.query.bool.max_clause_count"    = "1024"
   }
@@ -61,7 +61,7 @@ resource "aws_elasticsearch_domain" "elasticsearch" {
   ebs_options {
     ebs_enabled = true
     volume_type = "gp2"
-    volume_size = "${var.volume_size}"
+    volume_size = var.volume_size
   }
 
   snapshot_options {
@@ -70,8 +70,8 @@ resource "aws_elasticsearch_domain" "elasticsearch" {
   }
 
   # Tags
-  tags = "${merge(var.tags, map(
+  tags = merge(var.tags, map(
     "Name", "elasticsearch-es",
-    "Domain", "${var.domain_name}"
-  ))}"
+    "Domain", var.domain_name
+  ))
 }

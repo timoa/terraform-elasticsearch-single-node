@@ -22,7 +22,7 @@ variable "domain_name" {
 }
 
 variable "elasticsearch_version" {
-  default     = "6.3"
+  default     = "6.8"
   description = "Elastic Search Service cluster version number."
   type        = "string"
 }
