@@ -13,6 +13,7 @@ It supports encryption at rest with a custom KMS key and IAM Access Policy that 
 - Create an AWS Elasticsearch Service instance (managed by AWS)
 - Encryption with a KMS CMK (let you manage the usage of the KMS key)
 - Accessible only from your public IP
+- Under a custom VPC (`minimal-vpc` module) or default VPC (`minimal` module)
 
 ## Usage
 
@@ -35,11 +36,28 @@ It supports encryption at rest with a custom KMS key and IAM Access Policy that 
 | `elasticsearch_endpoint` | Elasticsearch public endpoint | String |
 | `elasticsearch_kibana_endpoint` | Elasticsearch Kibana public endpoint | String |
 
-### Example
+### Examples
+
+#### Under the default VPC
 
 ```bash
 module "es-single-node" {
   source = "github.com/timoa/terraform-elasticsearch-single-node/minimal"
+
+  # Your public IP to secure your Elasticsearch instance (required)
+  my_public_ip    = "1.2.3.4"
+
+  # AWS Region where you want to deploy your Elasticsearch single node
+  aws_region      = "eu-west-2"
+
+}
+```
+
+#### Under a new custom VPC
+
+```bash
+module "es-single-node" {
+  source = "github.com/timoa/terraform-elasticsearch-single-node/minimal-vpc"
 
   # Your public IP to secure your Elasticsearch instance (required)
   my_public_ip    = "1.2.3.4"
@@ -56,8 +74,6 @@ This Terraform module can also be improved by adding this changes:
 
 - Support for multiple environments (distinct name and tags between environment)
 - Support for Route 53 (by adding an alias to an existing Route 53 zone)
-
-> I'm playing with another minimal setup that uses a custom VPC and I will publish it soon on this GitHub repository.
 
 ## References
 
