@@ -3,7 +3,7 @@ repos:
   rev: v1.18.0
   hooks:
     - id: terraform_fmt
-    - id: terraform_docs
+    # - id: terraform_docs <= Failed to work with Terraform 0.12+
 - repo: git://github.com/pre-commit/pre-commit-hooks
   rev: v2.3.0
   hooks:
